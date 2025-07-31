@@ -1,7 +1,7 @@
 # Hot Update
 Instructions to setup the project
-First install HybridCLR
-Going on top bar HybridCLR > Installer... > Install
+First make sure HybridCLR is installed
+Going on top bar HybridCLR > Installer... > Install (if you see "installed version:" with a number is already installed)
 Then Follow PDF instructions in assets.
 
 Instructions of what are we doing behind the scenes:
