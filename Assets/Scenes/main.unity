@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load DLLs
+  m_text: Hot Update
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -604,50 +604,36 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Instructions of what are we doing behind the scenes:
 
-    After we press
-    the button
+
+    When the user
+    presses the Hot Update button
 
 
-    -DLL Hot Update
+    - In this template we read from StreamingAssets,
+    but you can swap in UnityWebRequest to fetch from a server at runtime.
 
-    The hot update DLL (HotUpdate.dll.bytes)
-    is downloaded at runtime in this case is locally downloaded but this can be replaced
-    with WebRequest.
+    -
+    We load HotUpdate.dll.bytes into memory together with AOT metadata and the asset
+    bundle.
 
-    The DLL is loaded into memory and also some AOT assembly
-    metadata is loaded to support interpreted execution for missing native generics.
+    - Then invokes Entry.Start() via reflection.
 
-    The
-    entry point (Entry.Start) is invoked via reflection, enabling hot update logic.
+    - Outputs logs
+    in build console to confirm the hot-update entry point was invoked.
 
-    It
-    Debugs a log message of "Hello World Entry.Start", we create a object and add
-    a component in runtime and we run a Generic Method which creates a List of structs
-    just to show the features we can do with Hybrid CLR
+    - Instantiates
+    a new GameObject and adds a component entirely via the hot-update DLL.
 
+    -
+    Calls a generic method that constructs a List<Struct> to demonstrate support
+    for structs and generics through HybridCLR.
 
-    -Asset Bundle Handling
+    - Instantiates a cube prefab
+    contained in that bundle.
 
-    Asset
-    bundles (like "prefabs") are downloaded similarly to DLLs.
-
-    Asset bundles
-    are loaded from memory using AssetBundle.LoadFromMemory.
-
-    Here we instantiate
-    a Cube prefab and that cubre prefab has scripts in it, which dynamically we change
-    the behaviour by changing its original color and we make it move.
-
-
-    Note:
-    keep in mind that the functionalities we dont use in the build code are gonna
-    be stripped in the code, so for example you wanna change a image sprite, in the
-    hot update but that code hasnt been used in build then is gonna return an exception
-    unless we add the Meta Assembly Files first.
-
-
-    For more info check the PDF
-    i added in the project Assets.'
+    - The Cube has a script attached which makes it
+    change color and rotate constantly thats what we change at runtime to illustrate
+    dynamic behavior updates.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -674,12 +660,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.2
+  m_fontSize: 16
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 2
-  m_fontSizeMax: 12.6
+  m_fontSizeMax: 16
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
