@@ -1,6 +1,8 @@
 ## HybridCLR Hot-Update Template
 
-A Unity project template demonstrating how to use [HybridCLR](https://github.com/focus-creative-games/HybridCLR) for runtime DLL hot-updates and asset-bundle loading.
+A Unity project template demonstrating how to use [HybridCLR](https://github.com/focus-creative-games/HybridCLR) for runtime DLL hot updates and asset bundle loading.
+
+[OxGFRame](https://github.com/michael811125/OxGFrame) uses a bunch of frameworks to work together to do a complete solution, but im just showing the hot fix functionality in this template for sake of simplicity, if you wanna check a full demonstration you can check this demo [FlappyBird HotUpdate](https://github.com/michael811125/FlappyBird_OxGFrame/tree/assetbundle_clr).
 
 ---
 
